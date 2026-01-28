@@ -1,7 +1,7 @@
-<H3>ENTER YOUR NAME</H3>
-<H3>ENTER YOUR REGISTER NO.</H3>
+<H3>ENTER YOUR NAME:RAMYA P</H3>
+<H3>ENTER YOUR REGISTER NO:212223230168</H3>
 <H3>EX. NO.1</H3>
-<H3>DATE</H3>
+<H3>DATE:28-1-26</H3>
 <H1 ALIGN =CENTER> Introduction to Kaggle and Data preprocessing</H1>
 
 ## AIM:
@@ -37,11 +37,93 @@ STEP 5:Normalizing the data<BR>
 STEP 6:Splitting the data into test and train<BR>
 
 ##  PROGRAM:
-TYPE YOUR CODE HERE
+~~~
+import pandas as pd
+import io
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.model_selection import train_test_split
+
+df= pd.read_csv("Churn_Modelling.csv")
+print(df)
+
+X=df.iloc[:,:-1].values
+print(X)
+
+y=df.iloc[:,-1].values
+print(y)
+
+print(df.isnull().sum())
+df.fillna(df.select_dtypes(include='number').mean(), inplace=True)
+
+print(df.isnull().sum())
+y=df.iloc[:,-1].values
+print(y)
+
+df.duplicated()
+print(df['EstimatedSalary'].describe())
+
+scaler=MinMaxScaler()
+df1 = pd.DataFrame(
+    scaler.fit_transform(df.select_dtypes(include='number')),
+    columns=df.select_dtypes(include='number').columns
+)
+print(df1)
+
+X_train ,X_test ,y_train,y_test=train_test_split(X,y,test_size=0.2)
+
+print(X_train)
+print(len(X_train))
+print(X_test)
+print("Lenght of X_test ",len(X_test))
+~~~
 
 
 ## OUTPUT:
-SHOW YOUR OUTPUT HERE
+
+<img width="1450" height="767" alt="image" src="https://github.com/user-attachments/assets/7e35a730-2e09-49bc-a61c-b6f883a0c9e6" />
+<img width="1312" height="328" alt="image" src="https://github.com/user-attachments/assets/8bf154ba-1546-478f-a9ce-9831666c0528" />
+
+## X VALUES:
+
+<img width="1057" height="237" alt="image" src="https://github.com/user-attachments/assets/9b36ad17-092f-46f1-8e05-feebcb7d2d27" />
+
+## Y VALUES:
+
+<img width="1077" height="121" alt="image" src="https://github.com/user-attachments/assets/98c8b26d-e202-4013-a510-25b8623075d3" />
+
+## NULL VALUES:
+
+<img width="1277" height="402" alt="image" src="https://github.com/user-attachments/assets/e4cc14b2-e16b-49ff-9999-722164b9b89e" />
+
+<img width="1312" height="432" alt="image" src="https://github.com/user-attachments/assets/6d0d9838-d39e-45e1-89e5-6d84eb6450b6" />
+
+## DUPLICATED VALUES:
+
+<img width="1305" height="323" alt="image" src="https://github.com/user-attachments/assets/67bdfdf3-3cf6-4dfe-9533-29eb9ef1985a" />
+
+## DESCRIPTION:
+
+<img width="1231" height="262" alt="image" src="https://github.com/user-attachments/assets/4e6f2873-e689-49ee-9ded-05ce4bbe06fb" />
+
+## TRAINING DATA:
+
+<img width="1375" height="676" alt="image" src="https://github.com/user-attachments/assets/3e498849-b76b-4ecb-92ed-cb688efe85f8" />
+
+## TESTING DATA:
+
+<img width="1300" height="496" alt="image" src="https://github.com/user-attachments/assets/09577525-d52e-4ded-ba65-f8fe19f1769b" />
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## RESULT:
